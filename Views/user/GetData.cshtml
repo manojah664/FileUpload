@@ -1,0 +1,76 @@
+﻿@model IEnumerable< Gallery.Models.Image>
+   
+@{
+    ViewBag.Title = "GetData";
+}
+
+<h2>GetData</h2>
+<script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+
+<script src="~/Scripts/DataTables/jquery.dataTables.js"></script>
+<style>  
+    /* CSS for table and input (textbox) */  
+    table, td, th {  
+        border: 1px solid black;  
+    }  
+  
+    
+
+    table, tr {  
+        border-collapse: collapse;  
+    }  
+  
+    input[type=text] {  
+        width: 100%;  
+    }  
+  
+    th {  
+        height: 50px;  
+        text-align: center;  
+    }  
+</style>  
+<table style="background-color:chocolate" >
+    <thead>
+        <tr style="width:200px" >
+            <th style="width:200px">
+                Member Name
+            </th>
+            <th style="width:200px">
+                Mobile Number
+            </th>
+            <th style="width:200px">
+                Image Name
+            </th>
+            <th  style="width:200px">
+                Image
+            </th>
+            <th style="width:200px">
+                Edit
+            </th>
+        </tr>
+
+    </thead>
+    <tbody>
+
+       
+            @foreach (var item in Model)
+            {
+                //for ID purpose writing this code
+              
+                <tr class="">
+                    <td style="text-align:center">
+                       @item.MemberName
+                    </td>
+                    <td style="text-align:center">
+                        @item.PhoneNumber
+                    </td>
+                    <td style="text-align:center">
+                        @item.ImageName" 
+                    </td>                   
+                    <td><img src="@Url.Content(item.ImagePath) " style="height:200px" /> </td>
+
+                    <td> <a href="/user/Edit/@item.MemberId"> Edit</a></td>
+                </tr>
+            }
+    </tbody>
+</table>
